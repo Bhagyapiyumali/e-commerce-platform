@@ -1,10 +1,51 @@
 import { Link, Outlet, Routes, Route } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { GoGraph } from "react-icons/go";
 import { FiBox, FiShoppingCart, FiUsers } from "react-icons/fi";
 import EditProductForm from "./admin/editProductForm";
 
+import AddProductPage from "./admin/addProduct";
+import AdminProductPage from "./admin/adminProductPage";
+import AdminOrderPage from "./admin/adminOrderPage";
+import {useEffect, useState} from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+
 export default function AdminHomePage() {
+  const [user,setUser] = useState(null)
+  const navigate = useNavigate();
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    if (!token) {      
+      navigate("/login")
+      return;
+    }
+    axios
+      .get(import.meta.env.VITE_BACKEND_URL + "/api/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res)=>{
+        console.log(res.data)
+        if(res.data.type!="admin"){
+          toast.error("Unauthorized access")
+          localStorage.removeItem("token")
+          navigate("/login")
+        }else{
+          setUser(res.data)
+        }
+
+      }).catch((err)=>{
+        console.error(err)
+        toast.error("Failed to fetch user data")
+        localStorage.removeItem("token")
+        navigate("/login")
+      })
+    
+  },[navigate])
+
+
+
     return (
         <div className="min-h-screen flex bg-gray-100">
 
@@ -60,10 +101,18 @@ export default function AdminHomePage() {
                 <Outlet />
                 <Routes path="/*">
                 <Route path="/products/addProduct" element={<h1>Add Product</h1>} />
+                <Route path="/products/editProduct" element={<EditProductForm />} />
+               
+                <Route path="/orders" element={<AdminOrderPage />} />
+               
+                <Route path="/customers" element={<h1>Customers</h1>} />
+                
 
                 </Routes>
             </div>
 
         </div>
     );
+
+    return null;
 }
