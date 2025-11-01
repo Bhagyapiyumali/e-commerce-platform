@@ -1,45 +1,32 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import Student from './models/studentModel.js';
+import studentRouter from './routes/studentRouter.js';
+import studentPouter from './routes/studentRouter.js';
 
-const app = express() ;
 
-const mongodburl = "mongodb+srv://admin:Bhagya2001@cluster0.1zfun.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-mongoose.connect(mongodburl,{})
+
+const app = express();
+
+const mongodburl = process.env.MONGODB_URL;
+
+mongoose.connect(mongodburl, {})
+  .then(() => console.log("Database connected"))
+  .catch((err) => console.error("Connection error:", err));
 
 const connection = mongoose.connection;
 
-connection.once("open", ()=>{
-    console.log("Database connected");
-})
-
-app.use(bodyParser.json())
-
-app.get("/", 
-    (req,res)=>{
-
-    console.log(req.body)
-    console.log("This is a get request");
-
-    res.json({
-        message: "Good morning "+req.body.name
-    })
+connection.on("error", (err) => {
+  console.error("MongoDB error:", err);
 });
 
-app.post("/",
 
-    (req,res)=>{
+app.use(bodyParser.json());
 
-        const studentSchema = mongoose.Schema({
-            name : String,
-            age : Number,
-            gender : String
-        })
-    }
-
-)
-
+app.use("/api/students", studentRouter);
+app.use("/api/products", productRouter);
 
 app.listen(
     5000,

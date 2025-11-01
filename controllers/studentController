@@ -1,0 +1,12 @@
+import Student from '../models/studentModel.js';
+
+function getStudents(req, res) {
+
+    Student.find().then(
+        (studentList)=>{[
+            res.json({
+                students: studentList
+            })
+        ]}
+    )
+}
