@@ -6,6 +6,8 @@ const studentSchema = new mongoose.Schema({
     gender: String
 })
 
-const Student = mongoose.model("Student", studentSchema);
+const Student = mongoose.model("Students", studentSchema)
 
 export default Student;
+
+

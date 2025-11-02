@@ -1,33 +1,33 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import Student from './models/studentModel.js';
 import studentRouter from './routes/studentRouter.js';
-import studentPouter from './routes/studentRouter.js';
+import productRouter from './routes/productRouter.js';
 
 
 
+const app = express() ;
 
-const app = express();
+const mongodburl = "mongodb+srv://bhagyapiyumali2001:bhagyasenevirathna2001@cluster0.1zfun.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-const mongodburl = process.env.MONGODB_URL;
-
-mongoose.connect(mongodburl, {})
-  .then(() => console.log("Database connected"))
-  .catch((err) => console.error("Connection error:", err));
+mongoose.connect(mongodburl,{})
 
 const connection = mongoose.connection;
 
-connection.on("error", (err) => {
-  console.error("MongoDB error:", err);
-});
+connection.once("open", ()=>{
+    console.log("Database connected");
+})
 
+app.use(bodyParser.json())
 
-app.use(bodyParser.json());
+app.use("/api/students", studentRouter)
+app.use("/api/products", productRouter)
 
-app.use("/api/students", studentRouter);
-app.use("/api/products", productRouter);
-
+app.get("/",
+    ()=>{
+        console.log("server is running properly");
+    }   
+)
 app.listen(
     5000,
     ()=>{
