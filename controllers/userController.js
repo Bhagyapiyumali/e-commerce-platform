@@ -42,6 +42,24 @@ export function loginUser(req,res){
                 const isPasswordValid = bcrypt.compareSync(req.body.password, user.password)
 
                 if(isPasswordValid){
+
+                const token = jwt.sign({
+                    email : user.email,
+                    firstName : user.firstName,
+                    lastName : user.lastName,
+                    type : user.type,
+                    isBlocked : user.isBlocked,
+                    profilePicture : user.profilePicture
+                }, "bhagya123")
+
+                res.json({
+                    message : "Login successful",
+                    token : token
+                })
+
+
+                    console.log(token)
+
                     res.json({
                         message : "Login successful"
                     })
