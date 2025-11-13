@@ -21,8 +21,24 @@ export function getProducts(req, res) {
 
 export function createProduct(req, res) {
 
+    console.log(req.user);
+
+    if(req.user == null){
+        res.json({
+            message : "you are not logged in"
+        })
+        return;
+    }
+
+    if(req.user.type !== "admin"){
+        res.json({
+            message : "you are not an admin"
+        })
+        return;
+    }
+
     const newProduct = new Product(req.body)
-    productRouter.deleteOne({ name: req.body.name }).then(() => {
+    newProduct.save().then(() => {
         res.json({
             message: 'Product create successfully'
         })
