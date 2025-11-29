@@ -30,7 +30,7 @@ app.use(
         console.log(token)
 
         if (token != null) {
-            jwt.verify(token, "bhagya123", (err, decoded) => {
+            jwt.verify(token, process.env.SECRET, (err, decoded) => {
 
                 if(!error) {
                     console.log(decoded)
