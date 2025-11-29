@@ -1,6 +1,8 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv';
+dotenv.config();
 
 export function createUser(req, res) {
     const newUserData = req.body;
@@ -54,7 +56,7 @@ export function loginUser(req, res) {
                     type: user.type,
                     profilePicture: user.profilePicture
                 },
-                "bhagya123", // Use environment variable in production
+                process.env.SECRET, // Use environment variable in production
                 { expiresIn: "1h" } // Optional: token expires in 1 hour
             );
 
