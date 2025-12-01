@@ -1,8 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import studentRouter from './routes/studentRouter.js';
-import productRouter from './routes/productRouter.js';
+
+
 import userRouter from './routes/userRouter.js';
 import jwt from 'jsonwebtoken';
 
@@ -32,20 +32,21 @@ app.use(
         if (token != null) {
             jwt.verify(token, process.env.SECRET, (err, decoded) => {
 
-                if(!error) {
-                    console.log(decoded)
-                    req.user = decoded
-                    
-                }
-            })
+                if (err) {
+                console.log("JWT Error:", err);
+            } else {
+                console.log("Decoded:", decoded);
+                req.user = decoded;
+            }
+            });
         }
         
         next();
     }
 )
 
-app.use("/api/students", studentRouter)
-app.use("/api/products", productRouter)
+
+
 app.use("/api/users", userRouter)
 
 
