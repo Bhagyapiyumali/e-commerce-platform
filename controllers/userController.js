@@ -74,7 +74,7 @@ export function loginUser(req, res) {
                     profilePicture: user.profilePicture
                 },
                 process.env.SECRET, // Use environment variable in production
-                { expiresIn: "1h" } // Optional: token expires in 1 hour
+                { expiresIn: "7d" } // Optional: token expires in 7 days
             );
 
             // Send token and success message
@@ -95,12 +95,12 @@ export function loginUser(req, res) {
 }
 
 
-export function isCustomer(req){
+export function isAdmin(req){
     if(req.user==null){
         return false
 
     }
-    if(req.user.type!=="customer"){
+    if(req.user.type!=="admin"){
         return false
     }
     return true;
