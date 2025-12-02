@@ -1,9 +1,10 @@
+import e from 'express';
 import Product from '../models/product.js';
 
 export function createProduct(req, res) {
-    if(!isAdmin(req)) {
+    if (!req.user || req.user.type !== "admin") {
         res.json({
-            message: "Only admin users can create products"
+            message: "Only admin users can add products"
         });
         return;
     }
@@ -16,7 +17,7 @@ export function createProduct(req, res) {
             });
         }).catch((err) => {
             res.json({
-                message: err
+                message: err.message
             });
         });
 }
