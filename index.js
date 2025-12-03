@@ -4,11 +4,14 @@ import mongoose from 'mongoose';
 
 
 import userRouter from './routes/userRouter.js';
+import ProductRouter from './routes/productRouter.js';
+import orderRouter from './routes/orderRouter.js';
+
 import jwt from 'jsonwebtoken';
 
 
 import dotenv from 'dotenv';
-import ProductRouter from './routes/productRouter.js';
+
 dotenv.config();
 
 const app = express() ;
@@ -50,6 +53,7 @@ app.use(
 
 app.use("/api/users", userRouter)
 app.use("/api/products",ProductRouter)
+app.use("/api/orders", orderRouter)
 
 
 app.listen(
