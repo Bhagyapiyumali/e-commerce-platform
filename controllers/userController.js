@@ -95,16 +95,15 @@ export function loginUser(req, res) {
 }
 
 
-export function isAdmin(req){
-    if(req.user==null){
-        return false
-
-    }
-    if(req.user.type!=="admin"){
-        return false
-    }
-    return true;
-
+export function isAdmin(req) {
+    if (req.user == null) return false;
+    return req.user.type === "admin";
 }
+
+export function isCustomer(req) {
+    if (!req.user) return false;
+    return req.user.type === "customer";
+}
+
 //"email": "example01@gmail.com", "password": "hashedpassword123"-admin
 //"email": "example0110@gmail.com","password": "hashedpassword123"-customer
