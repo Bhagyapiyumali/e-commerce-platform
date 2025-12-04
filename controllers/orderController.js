@@ -42,13 +42,15 @@ export async function createOrder(req, res) {
             }
 
             newProductArray[i] = {
-                productId: product.productId,
+                name: product.productname,
                 price: product.price,
                 quantity: newOrderData.orderedItems[i].quantity,
                 image: product.image[0]
             };
         }
         console.log(newProductArray);
+
+        newOrderData.orderedItems = newProductArray;
 
         newOrderData.orderId = orderId;
         newOrderData.email = req.user.email;
@@ -58,7 +60,7 @@ export async function createOrder(req, res) {
 
         res.json({
             message: "Order created successfully",
-            orderId
+            
         });
 
     } catch (error) {
