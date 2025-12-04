@@ -1,4 +1,5 @@
 import Order from '../models/order.js';
+import Product from '../models/product.js';
 import { isCustomer } from './userController.js';
 
 export async function createOrder(req, res) {
@@ -13,7 +14,7 @@ export async function createOrder(req, res) {
         const latestOrder = await Order.find().sort({ date: -1 }).limit(1);
 
         let orderId;
-        if (latestOrder.length === 0) {
+        if (latestOrder.length == 0) {
             orderId = "cbc001";
         } else {
             const currentOrderId = latestOrder[0].orderId;
@@ -22,6 +23,33 @@ export async function createOrder(req, res) {
         }
 
         const newOrderData = req.body;
+
+        const newProductArray = []
+
+        for (let i=0;i<newOrderData.orderedItems.length;i++) {
+            
+
+            const product = await Product.findOne({ 
+                productId : newOrderData.orderedItems[i].productId 
+            });
+            
+
+            if(product == null) {
+                return res.json({
+                    message: "Product with ID "+newOrderData.orderedItems[i].productId+" not found"
+                });
+                return;
+            }
+
+            newProductArray[i] = {
+                productId: product.productId,
+                price: product.price,
+                quantity: newOrderData.orderedItems[i].quantity,
+                image: product.image[0]
+            };
+        }
+        console.log(newProductArray);
+
         newOrderData.orderId = orderId;
         newOrderData.email = req.user.email;
 
@@ -29,7 +57,7 @@ export async function createOrder(req, res) {
         await order.save();
 
         res.json({
-            message: "Order placed successfully",
+            message: "Order created successfully",
             orderId
         });
 
