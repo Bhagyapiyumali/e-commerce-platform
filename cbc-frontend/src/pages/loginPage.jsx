@@ -1,18 +1,68 @@
-import { Link } from 'react-router-dom';
-import './loginPage.css';
+import { Link } from "react-router-dom";
 
 export default function LoginPage() {
-    return (
-        <div className="login-container">
-            <h1 className="login-title">Login Page </h1>
-            <input type="text" placeholder="Enter your Username" />
-            <input type="password" placeholder="Enter your Password" />
-            <button>Login</button>  
-
-            <Link to="/">Back to Home Page</Link>   
-        </div>
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      
+      {/* Card */}
+      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
         
+        {/* Title */}
+        <h2 className="text-2xl font-bold text-center text-gray-800">
+          Welcome Back
+        </h2>
+        <p className="text-center text-gray-500 mt-2">
+          Please login to your account
+        </p>
 
-        
-    )
+        {/* Form */}
+        <form className="mt-6 space-y-4">
+          
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="you@example.com"
+              className="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              placeholder="••••••••"
+              className="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Login Button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+          >
+            Login
+          </button>
+        </form>
+
+        {/* Footer */}
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Don’t have an account?{" "}
+          <Link
+            to="/register"
+            className="text-blue-600 hover:underline font-medium"
+          >
+            Sign up
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
 }
+
