@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
 import ProductRouter from './routes/productRouter.js';
 import orderRouter from './routes/orderRouter.js';
+import cors from 'cors';
 
 import jwt from 'jsonwebtoken';
 
@@ -17,6 +18,8 @@ dotenv.config();
 const app = express() ;
 
 const mongodburl = "mongodb+srv://bhagyapiyumali2001:bhagyasenevirathna2001@cluster0.1zfun.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+app.use(cors())
 
 mongoose.connect(mongodburl,{})
 
