@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function LoginPage() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       
@@ -25,7 +29,7 @@ export default function LoginPage() {
             </label>
             <input
               type="email"
-              placeholder="you@example.com"
+              placeholder=""
               className="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
