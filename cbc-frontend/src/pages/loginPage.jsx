@@ -12,7 +12,11 @@ export default function LoginPage() {
         axios.post("http//localhost:5000/api/users/login",{
             email : email,
             password : password
-        })
+        }).then(
+            (res)=>{
+                console.log(res)
+            }
+        )
     }
 
   return (
