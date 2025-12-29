@@ -1,16 +1,27 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 
 export default function LoginPage() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    function login(){
+        axios.post("http//localhost:5000/api/users/login",{
+            email : email,
+            password : password
+        })
+    }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       
       {/* Card */}
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
-        
+        {/* logo */}
+        <img src='https://www.vecteezy.com/free-vector/free-logo-design'className="rounded-full w-[100px]"/>
         {/* Title */}
         <h2 className="text-2xl font-bold text-center text-gray-800">
           Welcome Back
