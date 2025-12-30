@@ -80,7 +80,15 @@ export function loginUser(req, res) {
             // Send token and success message
             res.json({
                 message: "Login successful",
-                token: token
+                token: token,
+                user: {
+                    
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    type: user.type,
+                    profilePicture: user.profilePicture
+                }
             });
 
             // Optional: log token (remove in production)
