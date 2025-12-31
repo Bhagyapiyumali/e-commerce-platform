@@ -17,14 +17,14 @@ export default function LoginPage() {
             (res)=>{
 
                 console.log(res)
-                if(res.data.user=null){
+                if(res.data.user==null){
                     toast.error(res.data.message)
                     return
                 }
 
                 toast.success("Login Success")
 
-                localStorage.setItem("token",res.data.token)
+                localStorage.setItem("token", res.data.token)
                 if(res.data.user.type == "admin"){
                     window.location.href ="/admin"
                 }else{
