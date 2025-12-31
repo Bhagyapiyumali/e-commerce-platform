@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 
 export default function LoginPage() {
@@ -17,9 +18,11 @@ export default function LoginPage() {
 
                 console.log(res)
                 if(res.data.user=null){
-                    alert(res.data.message)
+                    toast.error(res.data.message)
                     return
                 }
+
+                toast.success("Login Success")
 
                 localStorage.setItem("token",res.data.token)
                 if(res.data.user.type == "admin"){
