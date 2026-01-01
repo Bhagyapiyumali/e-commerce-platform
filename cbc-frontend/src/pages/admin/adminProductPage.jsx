@@ -30,7 +30,10 @@ export default function AdminProductPage() {
     }, []);
 
     return (
-  <div className="mt-6 bg-white rounded-xl shadow-lg p-6">
+  <div className="mt-6 bg-white rounded-xl shadow-lg p-6 relative">
+    <button className="absolute top-4 right-4 px-4 py-2 bg-blue-600 text-black rounded hover:bg-blue-700 transition">
+      Add New Product
+    </button>
 
     <div className="flex items-center justify-between mb-6">
       <h1 className="text-2xl font-bold text-gray-800">
