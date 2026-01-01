@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { FaTrash, FaPen } from "react-icons/fa"
+import { FaTrash, FaPen, FaPlus } from "react-icons/fa"
+
 
 export default function AdminProductPage() {
 
@@ -32,7 +33,7 @@ export default function AdminProductPage() {
     return (
   <div className="mt-6 bg-white rounded-xl shadow-lg p-6 relative">
     <button className="absolute top-4 right-4 px-4 py-2 bg-blue-600 text-black rounded hover:bg-blue-700 transition">
-      Add New Product
+     <FaPlus/>
     </button>
 
     <div className="flex items-center justify-between mb-6">
