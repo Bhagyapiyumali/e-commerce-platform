@@ -1,5 +1,5 @@
-import { Link, Route } from "react-router-dom";
-import { Routes } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+
 import { GoGraph } from "react-icons/go";
 import { FiBox, FiShoppingCart, FiUsers } from "react-icons/fi";
 
@@ -52,13 +52,8 @@ export default function AdminHomePage() {
                 <h1 className="text-3xl font-semibold text-gray-800">
                     Welcome Admin 👋
                 </h1>
-                <Routes path="/*">
-                    <Route path="/dashboard" element={<h1>Dashboard</h1>} />
-                    <Route path="/products" element={<h1>Products</h1>} />    
-                    <Route path="/orders" element={<h1>Orders</h1>} />
-                    <Route path="/customers" element={<h1>Customers</h1>} />
                 
-                </Routes>
+                <Outlet />
             </div>
 
         </div>
