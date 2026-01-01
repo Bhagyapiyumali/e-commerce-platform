@@ -1,7 +1,7 @@
-export default function AdminDashboardPage() {
+export default function AdminOrderPage() {
     return (
         <div>
-            admin dashboard page structure
+            admin order page structure
         </div>
     )
 }
