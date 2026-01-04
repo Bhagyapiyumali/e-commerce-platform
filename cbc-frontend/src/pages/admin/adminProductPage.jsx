@@ -33,7 +33,7 @@ export default function AdminProductPage() {
 
     return (
   <div className="min-h-screen bg-white rounded-xl shadow-lg p-6 relative">
-    <Link className="absolute bottom-4 right-4 px-4 py-2 bg-blue-600 text-black rounded hover:bg-blue-700 transition">
+    <Link to="/admin/addProduct" className="absolute bottom-4 right-4 px-4 py-2 bg-blue-600 text-black rounded hover:bg-blue-700 transition">
      <FaPlus/>
     </Link>
 
