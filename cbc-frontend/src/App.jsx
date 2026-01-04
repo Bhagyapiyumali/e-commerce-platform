@@ -12,6 +12,7 @@ import AdminProductPage from './pages/admin/adminProductPage'
 import AdminCustomerPage from './pages/admin/adminCustomerPage'
 import AdminDashboardPage from './pages/admin/adminDashboardPage'
 import AdminOrderPage from './pages/admin/adminOrderPage'
+import AddProductPage from './pages/admin/addProduct'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="customers" element={<AdminCustomerPage />} />
           <Route path="dashboard" element={<AdminDashboardPage />} />
           <Route path="orders" element={<AdminOrderPage />} />
+          <Route path="addProduct" element ={<AddProductPage/>} />
 
         </Route>
           <Route path="*" element={<HomePage />} />
