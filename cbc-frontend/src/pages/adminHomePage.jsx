@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, Routes, Route } from "react-router-dom";
 
 import { GoGraph } from "react-icons/go";
 import { FiBox, FiShoppingCart, FiUsers } from "react-icons/fi";
@@ -8,7 +8,7 @@ export default function AdminHomePage() {
         <div className="w-full h-screen flex bg-gray-100">
             
             {/* Sidebar */}
-            <div className="w-1/4 bg-blue-700 text-white flex flex-col p-6 space-y-4">
+            <div className="w-1/4 h-full bg-blue-700 text-white flex flex-col p-6 space-y-4">
                 
                 <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
 
@@ -54,6 +54,10 @@ export default function AdminHomePage() {
                 </h1>
                 
                 <Outlet />
+                <Routes path="/*">
+                <Route path="/products/addProduct" element={<h1>Add Product</h1>} />
+
+                </Routes>
             </div>
 
         </div>
