@@ -31,12 +31,12 @@ export default function AdminProductPage() {
     }, []);
 
     return (
-  <div className="mt-6 bg-white rounded-xl shadow-lg p-6 relative">
+  <div className="min-h-screen bg-white rounded-xl shadow-lg p-6 relative">
     <button className="absolute bottom-4 right-4 px-4 py-2 bg-blue-600 text-black rounded hover:bg-blue-700 transition">
      <FaPlus/>
     </button>
 
-    <div className="flex items-center justify-between mb-6">
+    <div className="max-w-7*l mx-auto bg-white rounded-lg shadow-md p-8">
       <h1 className="text-2xl font-bold text-gray-800">
         Admin Products Management
       </h1>
