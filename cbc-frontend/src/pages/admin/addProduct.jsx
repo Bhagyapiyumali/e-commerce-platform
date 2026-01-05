@@ -1,6 +1,17 @@
+import { useState } from 'react';
 export default function AddProductPage() {
 
-    
+    const [productId, setProductId] = useState('');
+    const [productName, setProductName] = useState('');
+    const [alternativeName, setAlternativeName] = useState('');
+    const [imageUrls, setImageUrls] = useState('');
+    const [price, setPrice] = useState('');
+    const [lastPrice, setLastPrice] = useState('');
+    const [stock, setStock] = useState('');
+    const [description, setDescription] = useState('');
+
+
+
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-100 to-blue-300 flex items-center justify-center p-6">
             
@@ -20,6 +31,8 @@ export default function AddProductPage() {
                             type="text"
                             placeholder="Enter product ID"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            value={productId}
+                            onChange={(e) => setProductId(e.target.value)}
                         />
                     </div>
 
