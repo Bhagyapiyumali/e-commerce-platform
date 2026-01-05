@@ -76,6 +76,21 @@ export default function AddProductPage() {
                         />
                     </div>
 
+                    <div>
+                        <label className="block text-gray-700 font-medium mb-1">
+                            Stock
+                        </label>
+                        <input
+                            type="number"
+                            placeholder="Enter available stock quantity"
+                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                        />
+                    </div>
+
+                    
+
+
+
 
                 </div>
 
