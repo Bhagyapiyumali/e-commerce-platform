@@ -1,4 +1,6 @@
 export default function AddProductPage() {
+
+    
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-100 to-blue-300 flex items-center justify-center p-6">
             
