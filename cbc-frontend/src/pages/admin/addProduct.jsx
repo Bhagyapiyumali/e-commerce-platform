@@ -87,7 +87,17 @@ export default function AddProductPage() {
                         />
                     </div>
 
-                    
+                    <div>
+                        <label className="block text-gray-700 font-medium mb-1">
+                            Description
+                        </label>
+                        <textarea
+                            rows="4"
+                            placeholder="Enter product description"
+                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                        ></textarea>
+                    </div>
+
 
 
 
