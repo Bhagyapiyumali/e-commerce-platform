@@ -1,6 +1,6 @@
 export default function AddProductPage() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-100 to-blue-300 flex items-center justify-center p-6">
+        <div className="min-h-screen bg-linear-to-br from-blue-100 to-blue-300 flex items-center justify-center p-6">
             
             <div className="bg-white w-full max-w-lg rounded-2xl shadow-xl p-8">
                 
