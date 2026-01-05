@@ -5,10 +5,12 @@ import { FiBox, FiShoppingCart, FiUsers } from "react-icons/fi";
 
 export default function AdminHomePage() {
     return (
-        <div className="w-full h-screen flex bg-gray-100">
+        <div className="min-h-screen flex bg-gray-100">
+
+
             
             {/* Sidebar */}
-            <div className="w-1/4 h-full bg-blue-700 text-white flex flex-col p-6 space-y-4">
+            <div className="w-64 bg-blue-700 text-white flex flex-col p-6 space-y-4">
                 
                 <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
 
