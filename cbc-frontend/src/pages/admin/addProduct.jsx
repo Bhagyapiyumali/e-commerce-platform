@@ -44,6 +44,8 @@ export default function AddProductPage() {
                             type="text"
                             placeholder="Enter product name"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            value={productName}
+                            onChange={(e) => setProductName(e.target.value)}
                         />
                     </div>
 
@@ -55,6 +57,8 @@ export default function AddProductPage() {
                             type="text"
                             placeholder="Enter alternative name"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            value={alternativeName}
+                            onChange={(e) => setAlternativeName(e.target.value)}
                         />
                     </div>
 
@@ -66,6 +70,8 @@ export default function AddProductPage() {
                             rows="3"
                             placeholder="Enter image URLs separated by commas"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            value={imageUrls}
+                            onChange={(e) => setImageUrls(e.target.value)}
                         ></textarea>
                     </div>
 
@@ -77,6 +83,8 @@ export default function AddProductPage() {
                             type="number"
                             placeholder="Enter price"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
                         />
                     </div>
 
@@ -88,6 +96,8 @@ export default function AddProductPage() {
                             type="number"
                             placeholder="Enter previous price"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            value={lastPrice}
+                            onChange={(e) => setLastPrice(e.target.value)}
                         />
                     </div>
 
@@ -99,6 +109,8 @@ export default function AddProductPage() {
                             type="number"
                             placeholder="Enter available stock quantity"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            value={stock}
+                            onChange={(e) => setStock(e.target.value)}
                         />
                     </div>
 
@@ -110,6 +122,8 @@ export default function AddProductPage() {
                             rows="4"
                             placeholder="Enter product description"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                         ></textarea>
                     </div>
 
