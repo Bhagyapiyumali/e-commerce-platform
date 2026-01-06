@@ -10,6 +10,20 @@ export default function AddProductPage() {
     const [stock, setStock] = useState('');
     const [description, setDescription] = useState('');
 
+function handleAddProduct() {
+    console.log({
+        productId,
+        productName,
+        alternativeName,
+        imageUrls,
+        price,
+        lastPrice,
+        stock,
+        description
+    });
+    // Here you would typically send this data to your backend API
+}
+
 
 
     return (
