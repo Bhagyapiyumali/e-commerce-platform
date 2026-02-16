@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 export default function AddProductPage() {
 
     const [productId, setProductId] = useState('');
@@ -148,6 +149,8 @@ function handleAddProduct() {
                 </div>
 
                 <button className="w-full bg-blue-600 text-black py-3 rounded-lg mt-6 font-semibold hover:bg-blue-700 transition duration-300 shadow-md">
+
+                    onClick={handleAddProduct}
                     Add Product
                 </button>
 
