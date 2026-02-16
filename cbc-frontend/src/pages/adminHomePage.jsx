@@ -49,9 +49,9 @@ export default function AdminHomePage() {
             {/* Main Content */}
             <div className="w-3/4 p-6">
                 
-                <h1 className="text-3xl font-semibold text-gray-800">
+                {/*<h1 className="text-3xl font-semibold text-gray-800">
                     Welcome Admin 👋
-                </h1>
+                </h1>*/}
                 
                 <Outlet />
                 <Routes path="/*">
