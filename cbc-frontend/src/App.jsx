@@ -13,7 +13,7 @@ import AdminCustomerPage from './pages/admin/adminCustomerPage'
 import AdminDashboardPage from './pages/admin/adminDashboardPage'
 import AdminOrderPage from './pages/admin/adminOrderPage'
 import AddProductPage from './pages/admin/addProduct'
-import FileUploadTest from './pages/test'
+
 
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
             <Route path="addProduct" element ={<AddProductPage/>} />
 
           </Route>
-          <Route path="/test" element={<FileUploadTest />} />
+          
           <Route path="*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
