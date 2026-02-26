@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import uploadMediaToSupabase from '../utils/mediaUpload';
+
 
 export default function AddProductPage() {
 
@@ -8,14 +11,27 @@ export default function AddProductPage() {
     const [productName, setProductName] = useState('');
     const [alternativeName, setAlternativeName] = useState('');
     const [imageUrls, setImageUrls] = useState('');
+    const [imageFiles, setImageFiles] = useState([]);
     const [price, setPrice] = useState('');
     const [lastPrice, setLastPrice] = useState('');
     const [stock, setStock] = useState('');
     const [description, setDescription] = useState('');
+    const Navigate = useNavigate();
 
 async function handleAddProduct() {
     const altName = alternativeName.split(',')
-    const imgUrls = imageUrls.split(',')
+    
+    const promisesArray = [];
+
+    for (let i = 0; i < imageFiles.length; i++) {
+        promisesArray[i] = uploadMediaToSupabase(imageFiles[i]);
+    }
+
+    const imgUrls = await Promise.all(promisesArray);
+    console.log(imgUrls);
+
+    
+
 
     const product = {
         productId : productId,
@@ -101,13 +117,13 @@ async function handleAddProduct() {
                         <label className="block text-gray-700 font-medium mb-1">
                             Image URLs
                         </label>
-                        <textarea
-                            rows="3"
-                            placeholder="Enter image URLs separated by commas"
+                        <input
+                            type="file"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-                            value={imageUrls}
-                            onChange={(e) => setImageUrls(e.target.value)}
-                        ></textarea>
+                            onChange={(e) =>{ 
+                                setImageFiles(e.target.files)}}
+                                multiple
+                        />
                     </div>
 
                     <div>
