@@ -2,9 +2,31 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import toast from "react-hot-toast";
-
+import { useGoogleLogin } from '@react-oauth/google';
 
 export default function LoginPage() {
+
+  //   const googleLogin = useGoogleLogin({
+  //   onSuccess: (res)=>{
+  //     console.log(res)
+  //     axios.post(import.meta.env.VITE_BACKEND_URL+"/api/users/google",{
+  //       token : res.access_token
+  //     }).then(
+  //       (res)=>{
+  //         if(res.data.message == "User created"){
+  //           toast.success("Your account is created now you can login via google.")
+  //         }else{
+  //           localStorage.setItem("token",res.data.token)
+  //           if(res.data.user.type == "admin"){
+  //             window.location.href = "/admin"
+  //           }else{
+  //             window.location.href = "/"
+  //           }
+  //         }
+  //       }
+  //     )
+  //   }
+  // })
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -40,7 +62,7 @@ export default function LoginPage() {
       {/* Card */}
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
         {/* logo */}
-        <img src='https://www.vecteezy.com/free-vector/free-logo-design'className="rounded-full w-[100px]"/>
+        <img src='/logo.png'className="rounded-full w-[100px]"/>
         {/* Title */}
         <h2 className="text-2xl font-bold text-center text-gray-800">
           Welcome Back
