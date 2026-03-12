@@ -14,6 +14,7 @@ import AdminDashboardPage from './pages/admin/adminDashboardPage'
 import AdminOrderPage from './pages/admin/adminOrderPage'
 import AddProductPage from './pages/admin/addProduct'
 import EditProductPage from './pages/admin/editProductForm'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
 
@@ -24,6 +25,7 @@ function App() {
     <div>
       <BrowserRouter>
       <Toaster/>
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
         <Routes >
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -43,6 +45,7 @@ function App() {
           
           <Route path="*" element={<HomePage />} />
         </Routes>
+      </GoogleOAuthProvider>
       </BrowserRouter>
     </div>
   )
