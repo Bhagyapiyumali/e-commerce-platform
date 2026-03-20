@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 export default function AddProductPage() {
 
@@ -11,18 +13,35 @@ export default function AddProductPage() {
     const [stock, setStock] = useState('');
     const [description, setDescription] = useState('');
 
-function handleAddProduct() {
-    console.log({
-        productId,
-        productName,
-        alternativeName,
-        imageUrls,
-        price,
-        lastPrice,
-        stock,
-        description
-    });
-    // Here you would typically send this data to your backend API
+async function handleAddProduct() {
+    const altName = alternativeName.split(',')
+    const imgUrls = imageUrls.split(',')
+
+    const product = {
+        productId : productId,
+        productname : productName,
+        altName : altName,
+        image : imgUrls,
+        price : price,
+        lastPrice : lastPrice,
+        stock : stock,
+        description : description
+    }
+
+    const token = localStorage.getItem('token');
+    try {
+
+        await axios.post('http://localhost:5000/api/products', product, {
+            headers: {
+                Authorization : `Bearer ${token}`
+            }
+        })
+        toast.success('Product added successfully!');
+
+    } catch (err) {
+    console.log(err);
+        toast.error('Failed to add product. Please try again.');
+    }
 }
 
 
@@ -148,9 +167,10 @@ function handleAddProduct() {
 
                 </div>
 
-                <button className="w-full bg-blue-600 text-black py-3 rounded-lg mt-6 font-semibold hover:bg-blue-700 transition duration-300 shadow-md">
-
+                <button 
                     onClick={handleAddProduct}
+                    className="w-full bg-blue-600 text-black py-3 rounded-lg mt-6 font-semibold hover:bg-blue-700 transition duration-300 shadow-md"
+                    >
                     Add Product
                 </button>
 
