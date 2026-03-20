@@ -23,7 +23,7 @@ export default function AdminHomePage() {
                 </Link>
 
                 <Link
-                    to="products"
+                    to="/admin/products"
                     className="flex items-center gap-3 p-2 rounded hover:bg-blue-600 transition"
                 >
                     <FiBox size={20} />
