@@ -22,17 +22,19 @@ function App() {
     <>
       <BrowserRouter>
       <Toaster/>
-        <Routes path="/*">
+        <Routes >
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage/>}/>
-          <Route path="/admin" element={<AdminHomePage />}>
+
+
+          <Route path="/admin/*" element={<AdminHomePage />}>
           
-          <Route path="products" element={<AdminProductPage />} />
-          <Route path="customers" element={<AdminCustomerPage />} />
-          <Route path="dashboard" element={<AdminDashboardPage />} />
-          <Route path="orders" element={<AdminOrderPage />} />
-          <Route path="addProduct" element ={<AddProductPage/>} />
+            <Route path="products" element={<AdminProductPage />} />
+            <Route path="customers" element={<AdminCustomerPage />} />
+            <Route path="dashboard" element={<AdminDashboardPage />} />
+            <Route path="orders" element={<AdminOrderPage />} />
+            <Route path="addProduct" element ={<AddProductPage/>} />
 
         </Route>
           <Route path="*" element={<HomePage />} />
