@@ -1,5 +1,6 @@
 import e from 'express';
 import Product from '../models/product.js';
+import { isAdmin } from './userController.js';
 
 export function createProduct(req, res) {
     if (!req.user || req.user.type !== "admin") {
@@ -30,6 +31,30 @@ export function getProducts(req, res) {
         .catch((err) => {
             res.status(500).json({
                 message: "Error retrieving products"
+            });
+        });
+}
+
+export function deleteProduct(req, res) {
+
+    if (isAdmin(req)) {
+        res.json({
+            message: "Only admin users can delete products"
+        });
+        return;
+    }
+    const productId = req.params.productId;
+    Product.deleteOne({ productId: productId }
+
+    )
+        .then(() => {
+            res.json({
+                message: "Product deleted successfully"
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                message: "err"
             });
         });
 }
