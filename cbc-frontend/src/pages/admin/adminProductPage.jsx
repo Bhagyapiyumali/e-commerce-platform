@@ -11,6 +11,7 @@ export default function AdminProductPage() {
 
         
     ]);
+    const [productsLoaded, setProductsLoaded] = useState(false);
 
 
     useEffect(() => {
