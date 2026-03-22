@@ -36,6 +36,7 @@ async function handleAddProduct() {
                 Authorization : `Bearer ${token}`
             }
         })
+        Navigate('/admin/products')
         toast.success('Product added successfully!');
 
     } catch (err) {
