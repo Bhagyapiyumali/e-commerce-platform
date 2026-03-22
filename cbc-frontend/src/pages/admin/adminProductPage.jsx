@@ -1,4 +1,5 @@
 import axios from "axios"
+import { set } from "mongoose";
 import { useEffect, useState } from "react"
 import { FaTrash, FaPen, FaPlus } from "react-icons/fa"
 import {Link } from "react-router-dom"
@@ -15,8 +16,9 @@ export default function AdminProductPage() {
     useEffect(() => {
       if (productsLoaded) {
         axios.get("http://localhost:5000/api/products").then((res) => {
-            console.log(res.data);
+            console.log("useEffect running");
             setProducts(res.data);
+            setProductsLoaded(true);
             console.log(
                 {
                     discountTitle: "Summer Sale",
