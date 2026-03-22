@@ -95,6 +95,23 @@ export default function AdminProductPage() {
 
               <td className="px-4 py-3 text-center">
                 <button className="text-red-500 hover:text-red-700 mr-4">
+
+                  title="Delete"
+
+                  onClick={() => {
+                    alert(product.productId)
+                    const token = localStorage.getItem("token");
+                    axios.delete(`http://localhost:5000/api/products/${product.productId}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        },
+                    }).then((res) => {
+                      console.log(res.data);
+                    
+
+                    })
+                    
+                  }}
                   <FaTrash />
                 </button>
 
