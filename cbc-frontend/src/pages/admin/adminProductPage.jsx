@@ -34,7 +34,7 @@ export default function AdminProductPage() {
         }
         )
       }
-    }, []);
+    }, [productsLoaded]);
 
     return (
   <div className="min-h-screen bg-white rounded-xl shadow-lg p-6 relative">
