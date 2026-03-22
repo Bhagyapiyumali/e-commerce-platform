@@ -13,6 +13,7 @@ export default function AdminProductPage() {
 
 
     useEffect(() => {
+      if (productsLoaded) {
         axios.get("http://localhost:5000/api/products").then((res) => {
             console.log(res.data);
             setProducts(res.data);
@@ -26,9 +27,10 @@ export default function AdminProductPage() {
             console.log({
                 discountTitle: "Summer Sale",
             }
-        );
+          );
         }
-    )
+        )
+      }
     }, []);
 
     return (
@@ -110,7 +112,7 @@ export default function AdminProductPage() {
                     
 
                     })
-                    
+
                   }}
                   <FaTrash />
                 </button>
