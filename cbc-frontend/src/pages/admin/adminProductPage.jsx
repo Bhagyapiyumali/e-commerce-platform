@@ -1,6 +1,7 @@
 import axios from "axios"
 import { set } from "mongoose";
 import { useEffect, useState } from "react"
+import { toast } from "react-hot-toast";
 import { FaTrash, FaPen, FaPlus } from "react-icons/fa"
 import {Link } from "react-router-dom"
 
