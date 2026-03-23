@@ -15,7 +15,7 @@ export default function AdminProductPage() {
 
 
     useEffect(() => {
-      if (productsLoaded) {
+      if (!productsLoaded) {
         axios.get("http://localhost:5000/api/products").then((res) => {
             console.log("useEffect running");
             setProducts(res.data);
