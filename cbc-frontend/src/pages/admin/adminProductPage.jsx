@@ -113,7 +113,7 @@ export default function AdminProductPage() {
                     }).then((res) => {
                       console.log(res.data);
                       toast.success("Product deleted successfully!");
-                      window.location.reload();
+                      setProductsLoaded(false);
                     
 
                     })
