@@ -37,16 +37,15 @@ export function getProducts(req, res) {
 
 export function deleteProduct(req, res) {
 
-    if (isAdmin(req)) {
+    if (!isAdmin(req)) {
         res.json({
             message: "Only admin users can delete products"
         });
         return;
     }
     const productId = req.params.productId;
-    Product.deleteOne({ productId: productId }
+    Product.deleteOne({ _id: productId })
 
-    )
         .then(() => {
             res.json({
                 message: "Product deleted successfully"
