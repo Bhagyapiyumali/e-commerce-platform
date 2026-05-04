@@ -17,7 +17,7 @@ export default function AdminProductPage() {
 
     useEffect(() => {
       if (!productsLoaded) {
-        axios.get("import.meta.env.VITE_BACKEND_URL/api/products").then((res) => {
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products`).then((res) => {
             console.log("useEffect running");
             setProducts(res.data);
             setProductsLoaded(true);
