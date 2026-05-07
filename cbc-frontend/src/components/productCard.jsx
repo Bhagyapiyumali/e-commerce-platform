@@ -1,25 +1,68 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-export default function ProductCard(props){
+export default function ProductCard(props) {
+  const product = props.product;
 
-  console.log(props)
-  
   return (
-    <Link  to={`/productInfo/${props.product.productId}`} className="w-[300px] h-[450px] m-[70px]  rounded-xl shadow-lg shadow-gray-500 hover:shadow-primary  hover:border-[3px] overflow-hidden flex flex-col">
-     
-        <img src={props.product.image[0]} className="h-[60%] w-full object-cover"/>
-        <div className=" max-h-[40%] h-[35%] p-4 flex flex-col justify-between">
-        <h1 className="text-3xl font-bold text-accent text-center">{props.product.productName}</h1>
-        <h2 className="text-lg text-gray-500 text-center">{props.product.productId}</h2>
-        <p className="text-left text-xl font-semibold">LKR. {props.product.lastPrice.toFixed(2)}</p>
-        {
-          (props.product.lastPrice<props.product.price)&&
-          <p className="text-left text-xl text-gray-500 font-semibold line-through ">LKR. {props.product.price.toFixed(2)}</p>
+    <Link
+  to={`/productInfo/${product.productId}`}
+  className="
+    w-[300px]
+    bg-white
+    rounded-2xl
+    overflow-hidden
+    border border-[#E5D3B3]
+    shadow-md
+    hover:shadow-xl
+    hover:-translate-y-1
+    transition-all duration-300
+  "
+>
 
-        }
-        
-        </div>
-    
-    </Link>
-  )
+  {/* Image */}
+  <div className="overflow-hidden">
+    <img
+      src={product.image?.[0]}
+      alt={product.productname}
+      className="h-[220px] w-full object-cover hover:scale-105 transition duration-500"
+    />
+  </div>
+
+  {/* Details */}
+  <div className="p-5">
+
+    <h2 className="text-xl font-semibold text-[#6B4F3A] text-center">
+      {product.productname}
+    </h2>
+
+    <p className="text-center text-xs text-gray-400 mt-1">
+      {product.productId}
+    </p>
+
+    <div className="mt-4 text-center">
+      <span className="text-3xl font-bold text-[#B08D57]">
+        LKR {product.price.toFixed(2)}
+      </span>
+    </div>
+
+    <button
+      className="
+        w-full
+        mt-5
+        py-3
+        rounded-full
+        bg-[#B08D57]
+        text-[#6B4F3A]
+        font-medium
+        hover:bg-[#9A7748]
+        transition
+      "
+    >
+      View Product
+    </button>
+
+  </div>
+
+</Link>
+  );
 }
