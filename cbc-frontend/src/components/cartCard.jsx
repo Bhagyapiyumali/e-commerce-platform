@@ -32,14 +32,14 @@ export default function CartCard(props) {
       {!loaded ? (
         <tr>loading</tr>
       ) : (
-        <tr className="hover:bg-accent hover:text-white cursor-pointer">
+        <tr className="hover:bg-accent hover:text-black cursor-pointer">
           <td className="">
             <img
               src={product?.image[0]}
               className="w-[90px] h-[90px] object-cover mx-auto"
             />
           </td>
-          <td className="text-center">{product?.productName}</td>
+          <td className="text-center">{product?.productname}</td>
           <td className="text-center">{productId}</td>
           <td className="text-center">{qty}</td>
           <td className="text-center">LKR. {product?.lastPrice.toFixed(2)}</td>
