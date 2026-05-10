@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { toast } from "react-hot-toast";
 import { FaTrash, FaPen, FaPlus } from "react-icons/fa"
 import {Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 
 export default function AdminProductPage() {
@@ -36,6 +37,9 @@ export default function AdminProductPage() {
         )
       }
     }, [productsLoaded]);
+
+    const navigate = useNavigate();
+
 
     return (
   <div className="min-h-screen bg-white rounded-xl shadow-lg p-6 relative">
@@ -105,7 +109,7 @@ export default function AdminProductPage() {
                   title="Delete" onClick={() => {
                     alert(product.productId)
                     const token = localStorage.getItem("token");
-                    axios.delete(`import.meta.env.VITE_BACKEND_URL/api/products/${product.productId}`, {
+                    axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/products/${product.productId}`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         },
@@ -122,7 +126,11 @@ export default function AdminProductPage() {
                   <FaTrash />
                 </button>
 
-                <button className="text-blue-500 hover:text-blue-700">
+                <button className="text-blue-500 hover:text-blue-700"
+                  title="Edit" onClick={() => {
+                    navigate("/admin/products/editProduct", { state: { product : product } });
+                  }}
+                >
                   <FaPen />
                 </button>
               </td>
