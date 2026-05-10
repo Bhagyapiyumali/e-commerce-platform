@@ -13,6 +13,7 @@ import AdminCustomerPage from './pages/admin/adminCustomerPage'
 import AdminDashboardPage from './pages/admin/adminDashboardPage'
 import AdminOrderPage from './pages/admin/adminOrderPage'
 import AddProductPage from './pages/admin/addProduct'
+import EditProductPage from './pages/admin/editProductForm'
 
 
 
@@ -36,6 +37,7 @@ function App() {
             <Route path="dashboard" element={<AdminDashboardPage />} />
             <Route path="orders" element={<AdminOrderPage />} />
             <Route path="addProduct" element ={<AddProductPage/>} />
+            <Route path="products/editProduct" element={<EditProductPage />} />
 
           </Route>
           
