@@ -2,6 +2,7 @@ import { Link, Outlet, Routes, Route } from "react-router-dom";
 
 import { GoGraph } from "react-icons/go";
 import { FiBox, FiShoppingCart, FiUsers } from "react-icons/fi";
+import EditProductForm from "./admin/editProductForm";
 
 export default function AdminHomePage() {
     return (
@@ -29,6 +30,7 @@ export default function AdminHomePage() {
                     <FiBox size={20} />
                     <span>Products</span>
                 </Link>
+                <Routes path="/products/editProduct" element={<EditProductForm />} />
 
                 <Link
                     to="/admin/orders"
