@@ -6,39 +6,73 @@ import {
   FaLock,
   FaInstagram,
 } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 export default function HomeWebPage() {
   return (
     <div className="bg-[#FAF7F3] text-[#3B2F2F]">
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative h-[90vh] flex items-center justify-center text-center bg-gradient-to-r from-[#3B2F2F] to-[#6B4F3A] text-white px-6">
+      <section className="relative h-[90vh]">
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl"
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          pagination={{ clickable: true }}
+          navigation
+          className="h-full"
         >
-          <h1 className="text-5xl font-bold">
-            Luxury Skincare for Natural Glow ✨
-          </h1>
 
-          <p className="mt-5 text-[#F5E6D3]">
-            Discover premium cosmetics crafted with natural ingredients and
-            modern science.
-          </p>
+          {[
+            "/hero1.avif",
+            "/hero2.avif",
+            "/hero3.jpg",
+            "/hero4.avif",
+            "/hero5.png",
+          ].map((image, index) => (
+            <SwiperSlide key={index}>
 
-          <div className="mt-6 flex gap-4 justify-center">
-            <button className="px-6 py-3 bg-[#B08D57] rounded-full text-[#B08D57] hover:bg-[#9A7748] hover:text-[#6B4F3A] transition">
-              Shop Now
-            </button>
+              <div
+                className="h-[90vh] bg-cover bg-center relative"
+                style={{
+                  backgroundImage: `url(${image})`,
+                }}
+              >
 
-            <button className="px-6 py-3 border border-white rounded-full hover:bg-white text-[#B08D57] hover:text-[#6B4F3A] transition">
-              Explore
-            </button>
-          </div>
-        </motion.div>
+                <div className="absolute inset-0 bg-black/40"></div>
+
+                <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+
+                  <h1 className="text-5xl md:text-7xl font-bold">
+                    Luxury Beauty Collection
+                  </h1>
+
+                  <p className="mt-6 text-lg max-w-2xl">
+                    Premium skincare and cosmetics designed for radiant confidence.
+                  </p>
+
+                  <button className="mt-8 px-8 py-3 text-[#6B4F3A] bg-[#B08D57] rounded-full hover:bg-[#9A7748] transition">
+                    Shop Now
+                  </button>
+
+                </div>
+
+              </div>
+
+            </SwiperSlide>
+          ))}
+
+        </Swiper>
+
       </section>
 
       {/* ================= CATEGORIES ================= */}
