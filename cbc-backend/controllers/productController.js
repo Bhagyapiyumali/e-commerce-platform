@@ -44,7 +44,7 @@ export function deleteProduct(req, res) {
         return;
     }
     const productId = req.params.productId;
-    Product.deleteOne({ _id: productId })
+    Product.deleteOne({ productId: productId })
 
         .then(() => {
             res.json({
@@ -54,6 +54,29 @@ export function deleteProduct(req, res) {
         .catch((err) => {
             res.status(500).json({
                 message: "err"
+            });
+        });
+}
+
+export function updateProduct(req, res) {
+
+    if (!isAdmin(req)) {
+        res.status(403).json({
+            message: "Only admin users can update products"
+        });
+        return;
+    }
+    const productId = req.params.productId;
+    const updatedData = req.body;
+    Product.updateOne({ productId: productId }, updatedData)
+        .then(() => {
+            res.json({
+                message: "Product updated successfully"
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                message: "Error updating product"
             });
         });
 }
