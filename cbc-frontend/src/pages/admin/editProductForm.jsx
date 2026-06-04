@@ -56,7 +56,7 @@ async function handleAddProduct() {
     }
 
 
-    const product = {
+    const productData = {
         productId : productId,
         productname : productName,
         altName : altName,
@@ -70,17 +70,17 @@ async function handleAddProduct() {
     const token = localStorage.getItem('token');
     try {
 
-        await axios.post('import.meta.env.VITE_BACKEND_URL/api/products', product, {
+        await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/products/${product.productId}`, productData, {
             headers: {
                 Authorization : `Bearer ${token}`
             }
-        })
+        });
         navigate('/admin/products')
-        toast.success('Product added successfully!');
+        toast.success('Product updated successfully!');
 
     } catch (err) {
     console.log(err);
-        toast.error('Failed to add product. Please try again.');
+        toast.error('Failed to update product. Please try again.');
     }
 }
 
@@ -212,7 +212,7 @@ async function handleAddProduct() {
                     onClick={handleAddProduct}
                     className="w-full bg-blue-600 text-black py-3 rounded-lg mt-6 font-semibold hover:bg-blue-700 transition duration-300 shadow-md"
                     >
-                    Add Product
+                    Edit Product
                 </button>
 
             </div>
