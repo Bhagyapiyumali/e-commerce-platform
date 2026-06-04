@@ -4,6 +4,8 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZi
 
 import { createClient } from '@supabase/supabase-js';
 
+const supabase = createClient(url,key);
+
 
 export default function uploadMediaToSupabase(file) {
     return new Promise(async (resolve, reject) => {
@@ -21,7 +23,7 @@ export default function uploadMediaToSupabase(file) {
                 //     return;
                 // }
         
-        const supabase = createClient(url,key)
+        
         
         const timestamp = new Date().getTime();
         
