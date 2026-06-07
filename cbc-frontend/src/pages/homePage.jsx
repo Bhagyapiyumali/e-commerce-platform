@@ -15,8 +15,8 @@ export default function HomePage() {
     return (
         <div className="h-screen w-full">
             <Header/>
-            <div className='w-full h-[calc(100vh-100px)] bg-[#dabaa6] '>
-                <Routes path="/*">
+            <div className='w-full min-h-[calc(100vh-100px)] bg-[#dabaa6] '>
+                <Routes>
                     <Route path="/" element={<HomeWebPage/>} />
                     <Route path="/products" element={<ProductPage/>} />
                     <Route path="/about" element={<AboutPage/>} />
