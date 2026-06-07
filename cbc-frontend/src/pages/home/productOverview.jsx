@@ -99,7 +99,7 @@ export default function ProductOverview() {
             </p>
             <button
               onClick={onAddtoCartClick}
-              className="bg-accent text-white p-2 rounded-lg"
+              className="bg-accent text-accent p-2 rounded-lg"
             >
               Add to cart
             </button>
