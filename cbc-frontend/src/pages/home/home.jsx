@@ -8,12 +8,54 @@ import {
 } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { useNavigate } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 export default function HomeWebPage() {
+  const navigate = useNavigate();
+
+  const bestSellers = [
+  {
+    name: "Hydrating Face Serum",
+    description: "Deep hydration for glowing skin",
+    price: "Rs. 3,500",
+    image: "/best1.jpg",
+  },
+  {
+    name: "Vitamin C Cream",
+    description: "Brightens and evens skin tone",
+    price: "Rs. 4,200",
+    image: "/best2.jpg",
+  },
+  {
+    name: "Rose Water Toner",
+    description: "Refreshes and soothes skin",
+    price: "Rs. 2,900",
+    image: "/best3.jpg",
+  },
+  {
+    name: "Night Repair Cream",
+    description: "Nourishes while you sleep",
+    price: "Rs. 4,800",
+    image: "/best4.jpg",
+  },
+  {
+    name: "Luxury Face Mask",
+    description: "Instant glow and hydration",
+    price: "Rs. 3,900",
+    image: "/best5.jpg",
+  },
+  {
+    name: "Gentle Cleanser",
+    description: "Daily cleansing for healthy skin",
+    price: "Rs. 2,500",
+    image: "/best6.jpg",
+  },
+];
+
   return (
     <div className="bg-[#FAF7F3] text-[#3B2F2F]">
 
@@ -60,7 +102,10 @@ export default function HomeWebPage() {
                     Premium skincare and cosmetics designed for radiant confidence.
                   </p>
 
-                  <button className="mt-8 px-8 py-3 text-[#6B4F3A] bg-[#B08D57] rounded-full hover:bg-[#9A7748] transition">
+                  <button 
+                    className="mt-8 px-8 py-3 text-[#6B4F3A] bg-[#B08D57] rounded-full hover:bg-[#9A7748] transition"
+                    onClick={() => navigate("/products")}
+                  >
                     Shop Now
                   </button>
 
@@ -107,29 +152,50 @@ export default function HomeWebPage() {
           Best Sellers
         </h2>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
 
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+          {bestSellers.map((item, index) => (
             <motion.div
-              key={item}
+              key={index}
               whileHover={{ scale: 1.03 }}
-              className="bg-[#FAF7F3] p-5 rounded-xl shadow-md border border-[#E5D3B3]"
+              className="bg-[#FAF7F3] rounded-2xl overflow-hidden shadow-md border border-[#E5D3B3]"
             >
-              <div className="h-40 bg-[#E5D3B3] rounded-lg mb-4"></div>
 
-              <h3 className="font-semibold">Glow Serum {item}</h3>
-              <p className="text-sm text-gray-500">Hydrating skincare serum</p>
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-64 object-cover"
+              />
 
-              <div className="flex justify-between items-center mt-3">
-                <span className="font-bold text-[#B08D57]">Rs. 3,500</span>
-                <button className="px-3 py-1 bg-[#6B4F3A] text-white rounded-full text-sm">
-                  Add
-                </button>
+              <div className="p-5">
+
+                <h3 className="font-bold text-xl text-[#6B4F3A]">
+                  {item.name}
+                </h3>
+
+                <p className="text-sm text-gray-500 mt-2">
+                  {item.description}
+                </p>
+
+                <div className="flex justify-between items-center mt-5">
+
+                  <span className="font-bold text-xl text-[#B08D57]">
+                    {item.price}
+                  </span>
+
+                  <button className="px-4 py-2 bg-[#6B4F3A] text-[#B08D57] rounded-full hover:bg-[#B08D57] transition">
+                    Add
+                  </button>
+
+                </div>
+
               </div>
+
             </motion.div>
           ))}
 
         </div>
+
       </section>
 
       {/* ================= PROMO BANNER ================= */}
