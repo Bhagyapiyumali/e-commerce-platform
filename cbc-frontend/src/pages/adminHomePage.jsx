@@ -99,16 +99,7 @@ export default function AdminHomePage() {
                 </h1>*/}
                 
                 <Outlet />
-                <Routes path="/*">
-                <Route path="/products/addProduct" element={<h1>Add Product</h1>} />
-                <Route path="/products/editProduct" element={<EditProductForm />} />
-               
-                <Route path="/orders" element={<AdminOrderPage />} />
-               
-                <Route path="/customers" element={<h1>Customers</h1>} />
                 
-
-                </Routes>
             </div>
 
         </div>
