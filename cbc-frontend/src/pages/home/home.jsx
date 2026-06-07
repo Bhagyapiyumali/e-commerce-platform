@@ -30,11 +30,11 @@ export default function HomeWebPage() {
           </p>
 
           <div className="mt-6 flex gap-4 justify-center">
-            <button className="px-6 py-3 bg-[#B08D57] rounded-full text-[#B08D57] hover:bg-[#9A7748] transition">
+            <button className="px-6 py-3 bg-[#B08D57] rounded-full text-[#B08D57] hover:bg-[#9A7748] hover:text-[#6B4F3A] transition">
               Shop Now
             </button>
 
-            <button className="px-6 py-3 border border-white rounded-full hover:bg-white text-[#B08D57] hover:text-black transition">
+            <button className="px-6 py-3 border border-white rounded-full hover:bg-white text-[#B08D57] hover:text-[#6B4F3A] transition">
               Explore
             </button>
           </div>
@@ -106,7 +106,7 @@ export default function HomeWebPage() {
           Limited time luxury skincare offer
         </p>
 
-        <button className="mt-6 px-6 py-3 text-[#B08D57] bg-[#B08D57] rounded-full hover:bg-[#9A7748] transition">
+        <button className="mt-6 px-6 py-3 text-[#B08D57] bg-[#B08D57] rounded-full hover:text-[#6B4F3A] hover:bg-[#9A7748] transition">
           Grab Offer
         </button>
 
@@ -188,7 +188,7 @@ export default function HomeWebPage() {
             className="px-6 py-3 rounded-full bg-[#ffffff] text-black w-64"
           />
 
-          <button className="px-6 py-3 text-[#B08D57] bg-[#B08D57] rounded-full">
+          <button className="px-6 py-3 text-[#B08D57] hover:text-[#6B4F3A] bg-[#B08D57] rounded-full">
             Subscribe
           </button>
         </div>
