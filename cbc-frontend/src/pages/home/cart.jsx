@@ -57,19 +57,34 @@ export default function Cart() {
           );
         })}
       </table>
-      <h1 className="text-3xl font-bold text-accent">
-        Total: LKR. {labeledTotal.toFixed(2)}
-      </h1>
-      <h1 className="text-3xl font-bold text-accent">
-        Discount: LKR. {(labeledTotal - total).toFixed(2)}
-      </h1>
-      <h1 className="text-3xl font-bold text-accent">
-        Grand Total: LKR. {total}
-      </h1>
 
-      <button onClick={onOrderCheckOutClick} className="bg-accent hover:bg-accent-light text-white p-2 rounded-lg w-[300px]">
-        Checkout
-      </button>
+      <div className="mt-8 w-full max-w-md bg-white rounded-2xl shadow-md border border-[#E5D3B3] p-6">
+
+        <div className="flex justify-between text-gray-600 text-sm mb-2">
+          <span>Subtotal</span>
+          <span>LKR {labeledTotal.toFixed(2)}</span>
+        </div>
+
+        <div className="flex justify-between text-gray-600 text-sm mb-2">
+          <span>Discount</span>
+          <span>LKR {(labeledTotal - total).toFixed(2)}</span>
+        </div>
+
+        <hr className="my-3 border-[#E5D3B3]" />
+
+        <div className="flex justify-between text-lg font-bold text-[#6B4F3A]">
+          <span>Grand Total</span>
+          <span>LKR {total.toFixed(2)}</span>
+        </div>
+
+        <button
+          onClick={onOrderCheckOutClick}
+          className="mt-6 w-full bg-[#B08D57] hover:bg-[#9A7748] text-[#6B4F3A] py-3 rounded-full transition"
+        >
+          Proceed to Checkout
+        </button>
+
+      </div>
     </div>
   );
 }
