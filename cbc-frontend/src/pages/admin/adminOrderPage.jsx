@@ -112,13 +112,13 @@ export default function AdminOrdersPage() {
                 <td className="p-2 border-b">LKR {calculateTotal(order.orderedItems).toFixed(2)}</td>
                 <td className="p-2 border-b">
                   <button
-                    className="bg-blue-500 text-white px-3 py-1 rounded-lg mr-2 hover:bg-blue-600"
+                    className="bg-blue-500 text-gray-700 px-3 py-1 rounded-lg mr-2 hover:bg-blue-600"
                     onClick={() => handleViewDetails(order)}
                   >
                     View
                   </button>
                   <button
-                    className="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600"
+                    className="bg-green-500 text-gray-700 px-3 py-1 rounded-lg hover:bg-green-600"
                     onClick={() => handleUpdateOrder(order)}
                   >
                     Update
@@ -184,7 +184,7 @@ export default function AdminOrdersPage() {
             </div>
             <div className="flex justify-end mt-4">
               <button
-                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                className="bg-red-500 text-gray-700 px-4 py-2 rounded-lg hover:bg-red-600"
                 onClick={closeModals}
               >
                 Close
@@ -231,7 +231,7 @@ export default function AdminOrdersPage() {
                 Cancel
               </button>
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                className="bg-blue-500 text-gray-700 px-4 py-2 rounded-lg hover:bg-blue-600"
                 onClick={handleUpdate}
               >
                 Update
