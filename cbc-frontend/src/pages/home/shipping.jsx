@@ -147,21 +147,34 @@ export default function ShippingPage() {
             ))}
           </tbody>
         </table>
-        <h1 className="text-lg font-bold text-gray-700 mb-2">
-          Total: LKR. {labeledTotal.toFixed(2)}
-        </h1>
-        <h1 className="text-lg font-bold text-gray-700 mb-2">
-          Discount: LKR. {(labeledTotal - total).toFixed(2)}
-        </h1>
-        <h1 className="text-lg font-bold text-gray-700 mb-4">
-          Grand Total: LKR. {total.toFixed(2)}
-        </h1>
-        <button
-          className="bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-lg w-full"
-          onClick={createOrder}
-        >
-          Checkout
-        </button>
+
+        <div className="mt-8 w-full max-w-md bg-white rounded-2xl shadow-md border border-[#E5D3B3] p-6">
+
+          <div className="flex justify-between text-gray-600 text-sm mb-2">
+            <span>Subtotal</span>
+            <span>LKR {labeledTotal.toFixed(2)}</span>
+          </div>
+
+          <div className="flex justify-between text-gray-600 text-sm mb-2">
+            <span>Discount</span>
+            <span>LKR {(labeledTotal - total).toFixed(2)}</span>
+          </div>
+
+          <hr className="my-3 border-[#E5D3B3]" />
+
+          <div className="flex justify-between text-lg font-bold text-[#6B4F3A]">
+            <span>Grand Total</span>
+            <span>LKR {total.toFixed(2)}</span>
+          </div>
+
+          <button
+            className="bg-blue-600 hover:bg-blue-500 text-[#6B4F3A] py-2 px-4 rounded-lg w-full"
+            onClick={createOrder}
+          >
+            Checkout
+          </button>
+
+        </div>
       </div>
     </div>
   );
