@@ -24,13 +24,15 @@ export function createProduct(req, res) {
 }
 
 export function getProducts(req, res) {
-    Product.find()
+    Product.find().lean()
         .then((products) => {
             res.json(products);
         })
         .catch((err) => {
+            console.error("Error retrieving products:", err.message);
             res.status(500).json({
-                message: "Error retrieving products"
+                message: "Error retrieving products",
+                error: err.message
             });
         });
 }
@@ -97,19 +99,28 @@ export async function getProductById(req, res) {
 }
 
 export async function searchProducts(req, res) {
-  const query = req.params.query;
+  const query = (req.params.query || "").trim();
   try {
+    if (!query) {
+      const products = await Product.find();
+      return res.json(products);
+    }
+    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(escapedQuery, "i");
+
     const products = await Product.find({
       $or: [
-        { productName: { $regex: query, $options: "i" } },
-        { altNames: { $elemMatch: { $regex: query, $options: "i" } } },
+        { productname: { $regex: regex } },
+        { altName: { $elemMatch: { $regex: regex } } },
+        { productId: { $regex: regex } },
+        { description: { $regex: regex } }
       ],
     });
 
     res.json(products);
-  } catch (e) {
+  } catch (error) {
     res.status(500).json({
-      e,
+      message: error.message || "Error searching products"
     });
   }
 }
