@@ -10,7 +10,6 @@ export default function AddProductPage() {
     const [productId, setProductId] = useState('');
     const [productName, setProductName] = useState('');
     const [alternativeName, setAlternativeName] = useState('');
-    const [imageUrls, setImageUrls] = useState('');
     const [imageFiles, setImageFiles] = useState([]);
     const [price, setPrice] = useState('');
     const [lastPrice, setLastPrice] = useState('');

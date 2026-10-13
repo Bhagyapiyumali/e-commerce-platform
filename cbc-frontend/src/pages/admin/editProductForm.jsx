@@ -11,25 +11,30 @@ export default function EditProductForm() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const product = location.state.product;
+    const product = location.state?.product;
 
-    const altName = product.altName.join(', ');
+    const altName = product && Array.isArray(product.altName) 
+        ? product.altName.join(', ') 
+        : (product?.altName || '');
 
-    if(product == null){
-        navigate("/admin/products")
-    }
-
-
-
-    const [productId, setProductId] = useState(product.productId);
-    const [productName, setProductName] = useState(product.productname);
+    const [productId, setProductId] = useState(product?.productId || '');
+    const [productName, setProductName] = useState(product?.productname || '');
     const [alternativeName, setAlternativeName] = useState(altName);
-    const [imageUrls, setImageUrls] = useState('');
     const [imageFiles, setImageFiles] = useState([]);
-    const [price, setPrice] = useState(product.price);
-    const [lastPrice, setLastPrice] = useState(product.lastPrice);
-    const [stock, setStock] = useState(product.stock);
-    const [description, setDescription] = useState(product.description);
+    const [price, setPrice] = useState(product?.price || '');
+    const [lastPrice, setLastPrice] = useState(product?.lastPrice || '');
+    const [stock, setStock] = useState(product?.stock || '');
+    const [description, setDescription] = useState(product?.description || '');
+
+    useEffect(() => {
+        if (!product) {
+            navigate("/admin/products");
+        }
+    }, [product, navigate]);
+
+    if (!product) {
+        return null;
+    }
     
     
     

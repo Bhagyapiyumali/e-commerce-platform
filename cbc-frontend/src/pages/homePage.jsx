@@ -1,4 +1,4 @@
-import { Link, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from '../components/Header';
 import LoginPage from './loginPage';
 import ProductOverview from './home/productOverview';
@@ -10,12 +10,11 @@ import ContactPage from './home/contact';
 import AboutPage from './home/about';
 import HomeWebPage from './home/home';
 
-
 export default function HomePage() {
     return (
-        <div className="h-screen w-full">
+        <div className="min-h-screen w-full flex flex-col bg-[#FAF7F3]">
             <Header/>
-            <div className='w-full min-h-[calc(100vh-100px)] bg-[#dabaa6] '>
+            <main className='w-full flex-1 bg-[#FAF7F3]'>
                 <Routes>
                     <Route path="/" element={<HomeWebPage/>} />
                     <Route path="/products" element={<ProductPage/>} />
@@ -30,7 +29,7 @@ export default function HomePage() {
 
 
                 </Routes>
-            </div>
+            </main>
         </div>
     );
 }
