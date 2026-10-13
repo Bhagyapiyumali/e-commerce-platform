@@ -18,43 +18,43 @@ export default function HomeWebPage() {
   const navigate = useNavigate();
 
   const bestSellers = [
-  {
-    name: "Hydrating Face Serum",
-    description: "Deep hydration for glowing skin",
-    price: "Rs. 3,500",
-    image: "/best1.jpg",
-  },
-  {
-    name: "Vitamin C Cream",
-    description: "Brightens and evens skin tone",
-    price: "Rs. 4,200",
-    image: "/best2.jpg",
-  },
-  {
-    name: "Rose Water Toner",
-    description: "Refreshes and soothes skin",
-    price: "Rs. 2,900",
-    image: "/best3.jpg",
-  },
-  {
-    name: "Night Repair Cream",
-    description: "Nourishes while you sleep",
-    price: "Rs. 4,800",
-    image: "/best4.jpg",
-  },
-  {
-    name: "Luxury Face Mask",
-    description: "Instant glow and hydration",
-    price: "Rs. 3,900",
-    image: "/best5.jpg",
-  },
-  {
-    name: "Gentle Cleanser",
-    description: "Daily cleansing for healthy skin",
-    price: "Rs. 2,500",
-    image: "/best6.jpg",
-  },
-];
+    {
+      name: "Hydrating Face Serum",
+      description: "Deep hydration for glowing skin",
+      price: "Rs. 3,500",
+      image: "/best1.jpg",
+    },
+    {
+      name: "Vitamin C Cream",
+      description: "Brightens and evens skin tone",
+      price: "Rs. 4,200",
+      image: "/best2.jpg",
+    },
+    {
+      name: "Rose Water Toner",
+      description: "Refreshes and soothes skin",
+      price: "Rs. 2,900",
+      image: "/best3.jpg",
+    },
+    {
+      name: "Night Repair Cream",
+      description: "Nourishes while you sleep",
+      price: "Rs. 4,800",
+      image: "/best4.jpg",
+    },
+    {
+      name: "Luxury Face Mask",
+      description: "Instant glow and hydration",
+      price: "Rs. 3,900",
+      image: "/best5.jpg",
+    },
+    {
+      name: "Gentle Cleanser",
+      description: "Daily cleansing for healthy skin",
+      price: "Rs. 2,500",
+      image: "/best6.jpg",
+    },
+  ];
 
   return (
     <div className="bg-[#FAF7F3] text-[#3B2F2F]">
@@ -102,7 +102,7 @@ export default function HomeWebPage() {
                     Premium skincare and cosmetics designed for radiant confidence.
                   </p>
 
-                  <button 
+                  <button
                     className="mt-8 px-8 py-3 text-[#6B4F3A] bg-[#B08D57] rounded-full hover:bg-[#9A7748] transition"
                     onClick={() => navigate("/products")}
                   >
@@ -206,7 +206,7 @@ export default function HomeWebPage() {
           Limited time luxury skincare offer
         </p>
 
-        <button className="mt-6 px-6 py-3 text-[#B08D57] bg-[#B08D57] rounded-full hover:text-[#6B4F3A] hover:bg-[#9A7748] transition">
+        <button className="mt-6 px-6 py-3 text-[#3e3130] bg-[#B08D57] rounded-full hover:text-[#6B4F3A] hover:bg-[#9A7748] transition">
           Grab Offer
         </button>
 
@@ -288,7 +288,7 @@ export default function HomeWebPage() {
             className="px-6 py-3 rounded-full bg-[#ffffff] text-black w-64"
           />
 
-          <button className="px-6 py-3 text-[#B08D57] hover:text-[#6B4F3A] bg-[#B08D57] rounded-full">
+          <button className="px-6 py-3 text-[#3e3130] hover:text-[#6B4F3A] bg-[#B08D57] rounded-full">
             Subscribe
           </button>
         </div>

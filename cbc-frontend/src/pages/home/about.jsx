@@ -132,7 +132,7 @@ export default function AboutPage() {
             Experience skincare designed for elegance, purity, and confidence.
           </p>
 
-          <button className="mt-6 px-6 py-3 bg-[#B08D57] hover:bg-[#9A7748] text-[#B08D57] rounded-full transition">
+          <button className="mt-6 px-6 py-3 bg-[#B08D57] hover:bg-[#9A7748] text-[#3e3130] rounded-full transition">
             Shop Now
           </button>
         </motion.div>
