@@ -27,31 +27,27 @@ export async function createOrder(req, res) {
         const newProductArray = []
 
         for (let i=0;i<newOrderData.orderedItems.length;i++) {
-            
-
+            const item = newOrderData.orderedItems[i];
             const product = await Product.findOne({ 
-                productId : newOrderData.orderedItems[i].productId 
+                productId : item.productId 
             });
-            
 
             if(product == null) {
-                return res.json({
-                    message: "Product with ID "+newOrderData.orderedItems[i].productId+" not found"
+                return res.status(404).json({
+                    message: "Product with ID "+item.productId+" not found"
                 });
-                
             }
 
+            const itemQty = Number(item.quantity || item.qty || 1);
             newProductArray[i] = {
                 name: product.productname,
                 price: product.price,
-                quantity: newOrderData.orderedItems[i].quantity,
-                image: product.image[0]
+                quantity: itemQty,
+                image: product.image?.[0] || ""
             };
         }
-        console.log(newProductArray);
 
         newOrderData.orderedItems = newProductArray;
-
         newOrderData.orderId = orderId;
         newOrderData.email = req.user.email;
 
@@ -71,72 +67,72 @@ export async function createOrder(req, res) {
 export async function getOrders(req, res) {
     try {
         if (isCustomer(req)) {
-        const orders = await Order.find({ email: req.user.email });
-        res.json(orders);
-        return;
+            const orders = await Order.find({ email: req.user.email }).sort({ date: -1 });
+            return res.json(orders);
         } else if(isAdmin(req)) {
-            const orders = await Order.find({});
-            res.json(orders);
-            return;
-        }else {
-            res.json({
+            const orders = await Order.find({}).sort({ date: -1 });
+            return res.json(orders);
+        } else {
+            return res.status(401).json({
                 message: "Please login to view orders"
             });
-            
         }
-
-
-        
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 }
 
 export async function getQuote(req, res) {
-  
   try {
-    const newOrderData = req.body;
+    const orderedItems = req.body.orderedItems || [];
+    if (!Array.isArray(orderedItems) || orderedItems.length === 0) {
+      return res.json({
+        orderedItems: [],
+        total: 0,
+        labeledTotal: 0,
+      });
+    }
 
     const newProductArray = [];
-
     let total = 0;
     let labeledTotal = 0;
-    console.log(req.body)
 
-    for (let i = 0; i < newOrderData.orderedItems.length; i++) {
+    for (let i = 0; i < orderedItems.length; i++) {
+      const item = orderedItems[i];
       const product = await Product.findOne({
-        productId: newOrderData.orderedItems[i].productId,
+        productId: item.productId,
       });
 
-      if (product == null) {
-        res.json({
-          message:
-            "Product with id " +
-            newOrderData.orderedItems[i].productId +
-            " not found",
-        });
-        return;
+      if (!product) {
+        continue;
       }
-      labeledTotal += product.price * newOrderData.orderedItems[i].qty;
-      total += product.lastPrice * newOrderData.orderedItems[i].qty;
-      newProductArray[i] = {
-        name: product.productName,
-        price: product.lastPrice,
-        labeledPrice: product.price,
-        quantity: newOrderData.orderedItems[i].qty,
-        image: product.images[0],
-      };
+
+      const qty = Number(item.qty || item.quantity || 1);
+      const regularPrice = Math.max(Number(product.price) || 0, Number(product.lastPrice) || 0);
+      const salePrice = Math.min(Number(product.price) || 0, Number(product.lastPrice) || 0);
+      
+      const itemPrice = salePrice > 0 ? salePrice : (regularPrice || 0);
+      const itemRegular = regularPrice > 0 ? regularPrice : itemPrice;
+
+      labeledTotal += itemRegular * qty;
+      total += itemPrice * qty;
+
+      newProductArray.push({
+        productId: product.productId,
+        name: product.productname,
+        price: itemPrice,
+        labeledPrice: itemRegular,
+        quantity: qty,
+        qty: qty,
+        image: product.image?.[0] || "",
+      });
     }
-    console.log(newProductArray);
-    newOrderData.orderedItems = newProductArray;
-    newOrderData.total = total;
 
     res.json({
       orderedItems: newProductArray,
-      total: total,
-      labeledTotal: labeledTotal,
+      total: Number(total.toFixed(2)),
+      labeledTotal: Number(labeledTotal.toFixed(2)),
     });
-
 
   } catch (error) {
     res.status(500).json({
