@@ -103,9 +103,23 @@ export function loginUser(req, res) {
 }
 
 export function getCurrentUser(req, res) {
+  if (!req.user) {
+    return res.status(401).json({ message: "Not authenticated" });
+  }
   res.json(req.user);
 }
 
+export async function getAllUsers(req, res) {
+  if (!isAdmin(req)) {
+    return res.status(403).json({ message: "Only admin can view customers" });
+  }
+  try {
+    const users = await User.find({}, "-password").sort({ _id: -1 });
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}
 
 export function isAdmin(req) {
     if (req.user == null) return false;
